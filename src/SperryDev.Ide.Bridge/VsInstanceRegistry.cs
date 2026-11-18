@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 namespace SperryDev.Ide.Bridge;
 
 /// <summary>
-/// Lists running Visual Studio instances from the manifests each instance writes to
+/// Lists running IDE instances from the manifests each one writes to
 /// %ProgramData%\TokenSaver\vs-instances\&lt;pid&gt;.json (see <see cref="InstanceRegistry"/>).
 /// Manifests for processes that have exited are removed.
 /// </summary>

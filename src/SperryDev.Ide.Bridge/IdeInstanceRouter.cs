@@ -23,9 +23,14 @@ public static class IdeInstanceRouter
     /// With no solution given, the single running instance is used; several instances is an error.
     /// Returns a JSON object that always includes <c>ide</c>, <c>instance_pid</c>, and <c>solution_path</c>.
     /// </summary>
-    public static async Task<string> CallAsync(string action, object args, string? solutionPath, CancellationToken ct)
+    public static async Task<string> CallAsync(string action, object args, string? solutionPath, CancellationToken ct, string? ide = null)
     {
         var instances = VsInstanceRegistry.ListRunning();
+        if (!string.IsNullOrWhiteSpace(ide))
+        {
+            // Only instances of the requested IDE ("VisualStudio" or "VsCode") are candidates.
+            instances = instances.Where(i => string.Equals(i.Ide, ide, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
 
         VsInstance? target;
         if (!string.IsNullOrWhiteSpace(solutionPath))
@@ -40,7 +45,7 @@ public static class IdeInstanceRouter
         }
         else if (instances.Count == 0)
         {
-            return Error("No Visual Studio instance is running with a solution open.", instances);
+            return Error(string.IsNullOrWhiteSpace(ide) ? "No Visual Studio instance is running with a solution open." : $"No {ide} instance is running.", instances);
         }
         else if (instances.Count > 1)
         {
@@ -81,7 +86,6 @@ public static class IdeInstanceRouter
             using var writer = new StreamWriter(pipe, new UTF8Encoding(false), bufferSize: 1024, leaveOpen: true) { AutoFlush = true };
             using var reader = new StreamReader(pipe, Encoding.UTF8, detectEncodingFromByteOrderMarks: false, bufferSize: 1024, leaveOpen: true);
 
-            ct.ThrowIfCancellationRequested();
             await writer.WriteLineAsync(JsonSerializer.Serialize(new { action, args }));
             var line = await reader.ReadLineAsync();
 

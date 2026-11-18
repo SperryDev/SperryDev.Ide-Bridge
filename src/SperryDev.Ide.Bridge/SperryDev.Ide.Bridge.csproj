@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- net48 for the in-process Visual Studio extension (classic VSSDK); net10.0-windows for TokenSaver.MCP. -->
+    <TargetFrameworks>net48;net10.0-windows</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <PackageId>SperryDev.Ide.Bridge</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>SperryDev</Authors>
+    <Description>Named-pipe bridge between Visual Studio and TokenSaver.MCP: protocol, instance registry and client routing.</Description>
+    <RepositoryUrl>https://github.com/SperryDev/SperryDev.Ide-Bridge</RepositoryUrl>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <!-- .NET Framework 4.8 lacks System.Text.Json and the records/required-member support the code uses. -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <PackageReference Include="System.Text.Json" Version="9.0.0" />
+    <PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="all" />
+  </ItemGroup>
+
+</Project>

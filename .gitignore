@@ -1,0 +1,6 @@
+bin/
+obj/
+.tokensaver/
+.vs/
+*.user
+TestResults/

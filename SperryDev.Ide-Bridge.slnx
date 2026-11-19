@@ -1,2 +1,13 @@
 <Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SperryDev.Ide.Bridge/SperryDev.Ide.Bridge.csproj" />
+    <Project Path="src/SperryDev.Ide.Bridge.Mcp/SperryDev.Ide.Bridge.Mcp.csproj" />
+    <Project Path="src/SperryDev.Ide.Bridge.Common/SperryDev.Ide.Bridge.Common.csproj" />
+    <Project Path="src/TokenSaver.LogHelper/TokenSaver.LogHelper.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SperryDev.Ide.Bridge.Tests/SperryDev.Ide.Bridge.Tests.csproj" />
+    <Project Path="tests/TokenSaver.LogHelper.Tests/TokenSaver.LogHelper.Tests.csproj" />
+  </Folder>
 </Solution>
+

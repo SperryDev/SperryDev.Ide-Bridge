@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\SperryDev.Ide.Bridge\SperryDev.Ide.Bridge.csproj" />
+    <None Include="..\..\conformance\fixtures.json" Link="fixtures.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

@@ -18,7 +18,7 @@ Status as of 2026-11-19. Source: the approved split plan (mcp docs/plans/ide-bri
 - [ ] TokenSaver `docs/folder-index.md`: regenerate after the bridge code moves.
 - [ ] Verify end to end: dotnet build and test in both repos; MCP IdeBridgeHealth and IdeListInstances against a live VS instance.
 - [ ] Submodule decision: whether this repo and SperryDev.Docs become submodules of mcp. If yes, push the submodule first, then the pointer.
-- [ ] Close out the worktree copy F:\source\mcp-wt-root\docs\plans\ide-bridge-split.md (superseded by this plan).
+- [x] Close out the worktree copy `F:\source\mcp-wt-root\docs\plans\ide-bridge-split.md`: the `F:\source\mcp-wt-root` worktree no longer exists.
 
 ## VS 2026 and VS Code bridge code (TokenSaver copies removed in stage 7)
 
@@ -31,7 +31,7 @@ Status as of 2026-11-19. Source: the approved split plan (mcp docs/plans/ide-bri
 Decisions so far: the bridge has its own MCP server and its own LogHelper; TokenSaver has no LogHelper or LogViewer; the VS Code and Visual Studio
 bridges are separate implementations in this repo; TokenSaver keeps no IDE bridge code.
 
-Stages (each builds and tests before the next):
+Stages (implementation is complete through stage 9; stage 8 verification remains pending):
 1. [x] Add src/SperryDev.Ide.Bridge.Mcp (ModelContextProtocol host) and reference the bridge package.
 2. [x] Copy the generic LogHelper core into this repo for the Bridge host (196 tests passing). Stage 7 removes LogHelper and LogViewer completely from TokenSaver.
 3. [x] Complete (commit 0df42ff plus local wiring): moved the IDE tools and services into the bridge MCP, registered IdeTools with the server, and moved their IDE tool, debugger control, test-run, debug-context, and IDE log-source tests.

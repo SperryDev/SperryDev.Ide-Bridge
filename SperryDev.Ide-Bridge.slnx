@@ -6,11 +6,6 @@
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/SperryDev.Ide.Bridge.Tests/SperryDev.Ide.Bridge.Tests.csproj" />
-    <Project Path="src/TokenSaver.LogHelper/TokenSaver.LogHelper.csproj" />
-  </Folder>
-  <Folder Name="/tests/">
     <Project Path="tests/TokenSaver.LogHelper.Tests/TokenSaver.LogHelper.Tests.csproj" />
   </Folder>
 </Solution>
-
-

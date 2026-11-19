@@ -26,6 +26,25 @@ Status as of 2026-11-19. Source: the approved split plan (mcp docs/plans/ide-bri
 - [ ] VS Code bridge: src/Tooling/TokenSaver.VsCodeExt/src/ideBridge.ts stays in TokenSaver. Run the conformance/fixtures.json cases on the TypeScript side (needs a way to share the fixtures).
 - [ ] src/SperryDev.Ide.Bridge.Vsix/ is untracked in the working tree. Decide whether it belongs here.
 
+## Migration: everything IDE-bridge-related moves here
+
+Decisions so far: the bridge has its own MCP server; LogHelper moves here; the VS Code and Visual Studio
+bridges are separate implementations in this repo; TokenSaver keeps no bridge code.
+
+Stages (each builds and tests before the next):
+1. [ ] Add src/SperryDev.Ide.Bridge.Mcp (ModelContextProtocol host) and reference the bridge package.
+2. [ ] Copy LogHelper pieces the Ide* log sources need (LogHelper.Models, Contracts, Parsing, Sources) into this repo.
+3. [ ] Move IdeTools, IdeBridgeClient, IdeInstanceLifecycle, the IDE and VS log sources, DebuggerControlService,
+       ClientDebugContextService and DebugSessionLogSourceProvider into the bridge MCP. Move their tests.
+4. [ ] Move the VS Code plugin (ideBridge.ts, ideActions, outputBuffer, debugOutputTracker, debugOutputStore, logRoots) here
+       under vscode/ as its own implementation. It is not shared with the Visual Studio bridge.
+5. [ ] Move the Visual Studio host (TokenSaverPackage bridge wiring, IdeActions, Services bridge section) here, under the Vsix project.
+6. [ ] Move docs: Host-MCP/debug-output-capture-contract.md, debugger-control-contract.md, ide-launcher-contract.md,
+       and the bridge sections of self_test.md and scripts (update-vs-extension, build-vs-extension-vsix).
+7. [ ] Remove all of the above from TokenSaver (sources, tests, csproj references, slnx entries, ProgramRegistration and
+       ServiceRegistrationExtensions wiring, behavior config and terminal session config fields that exist only for the bridge).
+8. [ ] Build and test: both repos green; the bridge MCP starts; TokenSaver MCP starts without bridge tools.
+
 ## Open
 
 - [ ] PR #2 (feature/ide-bridge-ci into dev): CI workflow and solution fix. Review, then merge on approval (merges into dev need a release request).

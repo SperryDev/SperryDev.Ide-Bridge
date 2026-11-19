@@ -9,6 +9,23 @@ Status as of 2026-11-19. Source: the approved split plan (mcp docs/plans/ide-bri
 - [x] Re-sync merged into dev through PR #1 (dev at 8f060ab).
 - [x] Repo public; branch protection on dev (PRs required, no force push, no deletion; 0 approvals).
 
+## Moved from the mcp and TokenSaver plans
+
+- [x] TokenSaver consumer switch committed on feature/ide-bridge-consumer (8238748, 7ec53a2). Not pushed. Merge into local wip is done (c73d089, in TokenSaver).
+- [ ] Merge feature/ide-bridge-consumer into TokenSaver wip and open a wip -> dev PR. Needs approval before any merge into dev.
+- [x] Stale stash vs-services-bridge-wip: already gone. Nothing to do.
+- [ ] docs/ide-bridge.md: now in this repo; the VS Code bridge section is current. Check the `unsupported` field against the VS Code bridge.
+- [ ] TokenSaver `docs/folder-index.md`: regenerate after the bridge code moves.
+- [ ] Verify end to end: dotnet build and test in both repos; MCP IdeBridgeHealth and IdeListInstances against a live VS instance.
+- [ ] Submodule decision: whether this repo and SperryDev.Docs become submodules of mcp. If yes, push the submodule first, then the pointer.
+- [ ] Close out the worktree copy F:\source\mcp-wt-root\docs\plans\ide-bridge-split.md (superseded by this plan).
+
+## VS 2026 and VS Code bridge code (still in TokenSaver)
+
+- [ ] VS 2026 extension: TokenSaverPackage.cs, IdeActions.cs, and the bridge section of ServicesViewModel.cs stay in TokenSaver. Decide whether they move here.
+- [ ] VS Code bridge: src/Tooling/TokenSaver.VsCodeExt/src/ideBridge.ts stays in TokenSaver. Run the conformance/fixtures.json cases on the TypeScript side (needs a way to share the fixtures).
+- [ ] src/SperryDev.Ide.Bridge.Vsix/ is untracked in the working tree. Decide whether it belongs here.
+
 ## Open
 
 - [ ] PR #2 (feature/ide-bridge-ci into dev): CI workflow and solution fix. Review, then merge on approval (merges into dev need a release request).

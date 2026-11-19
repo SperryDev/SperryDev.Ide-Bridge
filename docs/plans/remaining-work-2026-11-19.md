@@ -39,10 +39,8 @@ Stages (each builds and tests before the next):
 5. [x] Extract the Visual Studio host (package wiring, IdeActions, and bridge controls) under the VSIX project. The TokenSaver copy was removed in stage 7.
 6. [x] Move the three Host-MCP contracts (labeled historical with links to current docs), extract the IDE bridge self-test to `docs/self_test.md`, and add standalone VSIX build/update scripts under `scripts/`. The old TokenSaver scripts are retained because they package the combined TokenSaver extension and contain no bridge-only sections; no bridge-only script section could be moved out of them.
 7. [x] Remove the extracted Bridge MCP tools/control services and tests, old IDE control HTTP endpoints/contracts, IDE-backed log providers, VS Code bridge files, duplicate Visual Studio host/controls, VSCode debugger adapter project, package references, solution entries, and the `IdeTestRunMode` setting from TokenSaver. Remove LogHelper and LogViewer completely, including their MCP tools, projects, configuration, skills, and contracts. Keep TerminalControl and its current config until stage 9 moves it; `TerminalLaunchMode` still serves TokenSaver terminal tools. Folder-index regeneration remains pending because the TokenSaver `code_index` MCP tool is unavailable here.
-8. [ ] Build and test: both repos green; the bridge MCP starts; TokenSaver MCP starts without bridge tools.
-9. [ ] Move the terminal helper (src/Core/TokenSaver.TerminalControl, with its tests and the wt standard-session work
-       in docs/plans/wt-standard-session.md) into this repo. Remove TerminalSessionConfig bridge fields in TokenSaver.
-       TerminalControl has its own tests (84 passing last run) that move with it.
+8. [ ] Build and test: both repos green; the bridge MCP starts; TokenSaver MCP starts without bridge tools. Not run yet.
+9. [x] Move TerminalControl, WindowsSession support, terminal MCP tool and tests, contract, and wt standard-session plan into this repo. Remove the terminal stack from TokenSaver while leaving its separate WindowsSession utility for WslControl. Verification remains pending.
 
 ## Open
 

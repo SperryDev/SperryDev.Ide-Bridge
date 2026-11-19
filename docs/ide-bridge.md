@@ -39,6 +39,7 @@ Visual Studio and VS Code. The reply's `ide` field says which IDE handled it.
 | `IdeAddWatch`, `IdeRemoveWatch`, `IdeListWatches` | `addWatch`, `removeWatch`, `listWatches` | Watches are kept by the bridge. Values show only while paused. |
 | `IdeKillProcess` | `killProcess` | Kills only processes this bridge started. VS starts none, so it refuses every pid. VS Code kills its clean/publish processes. |
 | `IdeLaunchInstance` / `IdeKillInstance` | (MCP lifecycle) | Launch or save-and-kill a VS instance. Kill refuses if any document is unsaved. |
+| `TerminalSession` | `open`, `tab`, `exec`, `list`, `close` | Runs commands in visible Windows Terminal sessions or headless service-account sessions. See [terminal-session-contract.md](terminal-session-contract.md). |
 
 ## Limits
 

@@ -15,6 +15,14 @@ Use this checklist to exercise the standalone `SperryDev.Ide.Bridge.Mcp` server 
 
 Record each result as PASS, FAIL, or NOT RUN with the exact tool arguments and any error message.
 
+## Terminal session checks
+
+- Run `dotnet test tests/TokenSaver.TerminalControl.Tests/TokenSaver.TerminalControl.Tests.csproj` for terminal session, pipe, and wrapper coverage.
+- Run `dotnet test tests/SperryDev.Ide.Bridge.Tests/SperryDev.Ide.Bridge.Tests.csproj --filter FullyQualifiedName~TerminalSessionToolsTests` for MCP input validation.
+- The real Windows Terminal smoke tests open windows; run them only when an operator intends that action. The LocalSystem interactive path requires the bridge service running as SYSTEM and remains an explicit live check.
+
+Record each result as PASS, FAIL, or NOT RUN and include the exact command and counts.
+
 ## Actions requiring a deliberate live check
 
 These tools change IDE or project state. Run them only when the test operator intends the specific action and has a suitable scratch solution:

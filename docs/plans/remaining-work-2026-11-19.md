@@ -44,6 +44,9 @@ Stages (each builds and tests before the next):
 7. [ ] Remove all of the above from TokenSaver (sources, tests, csproj references, slnx entries, ProgramRegistration and
        ServiceRegistrationExtensions wiring, behavior config and terminal session config fields that exist only for the bridge).
 8. [ ] Build and test: both repos green; the bridge MCP starts; TokenSaver MCP starts without bridge tools.
+9. [ ] Move the terminal helper (src/Core/TokenSaver.TerminalControl, with its tests and the wt standard-session work
+       in docs/plans/wt-standard-session.md) into this repo. Remove TerminalSessionConfig bridge fields in TokenSaver.
+       TerminalControl has its own tests (84 passing last run) that move with it.
 
 ## Open
 

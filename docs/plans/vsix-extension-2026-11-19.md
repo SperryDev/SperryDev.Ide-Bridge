@@ -14,6 +14,7 @@ Status as of 2026-11-19. Branch: feature/ide-bridge-vsix (from origin/dev). Work
 ## Open
 
 - [ ] Verify the install: the VSIX is not confirmed in VS 18 Extensions. Check Extensions > Manage Extensions, then open the Tools menu and run "Show IDE Bridge Status".
+- [x] Investigate the reported stale extensionDir: this project is already an in-process VSSDK/net48 VSIX. The source manifest has no `extensionDir`; the built package has `kklsjkso.obx`, and the reported `j30o0obs.15i` directory is absent from this profile. An in-process port does not apply here.
 - [ ] Remove hardcoded VS 18 Community path in the csproj (VsSdkTargetsPath, TemplateOutputDirectory). Resolve it from the VS install instead.
 - [ ] Align Microsoft.VisualStudio.SDK with the resolved version (18.11.1036 is used; NU1603 warns that 18.4.33 was not found).
 - [ ] Remove obsolete InstalledProductRegistration attribute (CS0618) and use the manifest only.

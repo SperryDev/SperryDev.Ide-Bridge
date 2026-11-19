@@ -48,6 +48,7 @@ Stages (each builds and tests before the next):
 - [ ] CI has not run on GitHub yet. Once it runs, add build-and-test as a required check on dev.
 - [ ] Publish on a v* tag: confirm the publish job pushes to the SperryDev feed with GITHUB_TOKEN (not tested).
 - [x] Add a README that links to docs/plans, the local protocol doc, and the TokenSaver guide (docs/ide-bridge.md stays there).
-- [ ] VS extension install is blocked by a stale extensionDir in the VSIX manifest (VSExtensions\j30o0obs.15i). Investigate the in-process VSSDK port as the fix; not started.
+- [x] Investigate the reported stale extensionDir: this project is already an in-process VSSDK/net48 VSIX. Its source manifest has no `extensionDir`; the current package metadata uses `kklsjkso.obx`, and the reported `j30o0obs.15i` path is absent from this profile's per-user extension directory. An in-process port does not apply to this project.
+- [ ] Verify the extension in VS 18 Manage Extensions and run “Show IDE Bridge Status”; the install/load state is still unconfirmed.
 - [ ] Verify end to end: MCP IdeBridgeHealth and IdeListInstances against a live Visual Studio instance.
 - [ ] Decide whether the repo becomes a submodule of mcp; if yes, push the submodule first, then the pointer.

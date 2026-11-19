@@ -32,9 +32,9 @@ Decisions so far: the bridge has its own MCP server; LogHelper moves here; the V
 bridges are separate implementations in this repo; TokenSaver keeps no bridge code.
 
 Stages (each builds and tests before the next):
-1. [ ] Add src/SperryDev.Ide.Bridge.Mcp (ModelContextProtocol host) and reference the bridge package.
-2. [ ] Copy LogHelper pieces the Ide* log sources need (LogHelper.Models, Contracts, Parsing, Sources) into this repo.
-3. [ ] Move IdeTools, IdeBridgeClient, IdeInstanceLifecycle, the IDE and VS log sources, DebuggerControlService,
+1. [x] Add src/SperryDev.Ide.Bridge.Mcp (ModelContextProtocol host) and reference the bridge package.
+2. [x] Move all of LogHelper (src/TokenSaver.LogHelper, 196 tests passing) into this repo. TokenSaver still has its own copy until stage 7.
+3. [~] Partly done (commit 0df42ff): IdeTools, IdeBridgeClient, IdeInstanceLifecycle, IdeReply, IDELauncherService, ManagedProcessRegistry, IdeTestRunService, the IDE/VS log sources and DebuggerControlService now compile here. Still to do: register the tools with the server, move their tests, and move ClientDebugContextService/DebugSessionLogSourceProvider checks. Move IdeTools, IdeBridgeClient, IdeInstanceLifecycle, the IDE and VS log sources, DebuggerControlService,
        ClientDebugContextService and DebugSessionLogSourceProvider into the bridge MCP. Move their tests.
 4. [ ] Move the VS Code plugin (ideBridge.ts, ideActions, outputBuffer, debugOutputTracker, debugOutputStore, logRoots) here
        under vscode/ as its own implementation. It is not shared with the Visual Studio bridge.
@@ -57,3 +57,4 @@ Stages (each builds and tests before the next):
 - [ ] VS extension install is blocked by a stale extensionDir in the VSIX manifest (VSExtensions\j30o0obs.15i). Investigate the in-process VSSDK port as the fix; not started.
 - [ ] Verify end to end: MCP IdeBridgeHealth and IdeListInstances against a live Visual Studio instance.
 - [ ] Decide whether the repo becomes a submodule of mcp; if yes, push the submodule first, then the pointer.
+

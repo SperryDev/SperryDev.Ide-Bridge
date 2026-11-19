@@ -3,8 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net10.0-windows</TargetFramework>
     <LangVersion>latest</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <ImplicitUsings>disable</ImplicitUsings>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>
@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\SperryDev.Ide.Bridge\SperryDev.Ide.Bridge.csproj" />
+    <ProjectReference Include="..\..\src\SperryDev.Ide.Bridge.Mcp\SperryDev.Ide.Bridge.Mcp.csproj" />
     <None Include="..\..\conformance\fixtures.json" Link="fixtures.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 

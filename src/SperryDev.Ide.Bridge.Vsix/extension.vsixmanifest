@@ -1,0 +1,19 @@
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011">
+  <Metadata>
+    <Identity Id="SperryDev.Ide.Bridge.Vsix.777DD1F6-DC26-4E4A-BA33-91BAD92AC161" Version="0.1.0" Language="en-US" Publisher="SperryDev" />
+    <DisplayName>SperryDev IDE Bridge</DisplayName>
+    <Description xml:space="preserve">Named-pipe bridge that lets TokenSaver.MCP reach this Visual Studio instance.</Description>
+  </Metadata>
+  <Installation InstalledByMsi="false">
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[18.0,19.0)">
+      <ProductArchitecture>amd64</ProductArchitecture>
+    </InstallationTarget>
+  </Installation>
+  <Prerequisites>
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,19.0)" DisplayName="Visual Studio core editor" />
+  </Prerequisites>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.VsPackage" Path="SperryDev.Ide.Bridge.Vsix.pkgdef" />
+    <Asset Type="Microsoft.VisualStudio.Assembly" Path="SperryDev.Ide.Bridge.Vsix.dll" AssemblyName="SperryDev.Ide.Bridge.Vsix, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  </Assets>
+</PackageManifest>

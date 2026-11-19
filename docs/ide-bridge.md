@@ -7,7 +7,7 @@ Visual Studio and VS Code. The reply's `ide` field says which IDE handled it.
 
 - Each IDE window runs a bridge on a named pipe, one pipe per window process:
   - Visual Studio: `InstanceRegistry.PipeNameFor(pid)` in the `SperryDev.Ide.Bridge` package (source: SperryDev/SperryDev.Ide-Bridge). The VS extension hosts it.
-  - VS Code: `\\.\pipe\TokenSaver.VSCode.<pid>` (`src/Tooling/TokenSaver.VsCodeExt/src/ideBridge.ts`).
+  - VS Code: `\\.\pipe\TokenSaver.VSCode.<pid>` (`vscode/src/ideBridge.ts`).
 - Each window writes a manifest to `%ProgramData%\TokenSaver\vs-instances\<pid>.json`:
   `{ pid, pipeName, solutionPath, updatedUtc, ide }`. `ide` is `VisualStudio` or `VsCode`.
 - The MCP server reads the manifests (`VsInstanceRegistry`, in the package) and routes each call (`IdeInstanceRouter`, in the package) to the window whose
@@ -69,7 +69,7 @@ This rebuilds the VSIX and opens VsixInstaller for each VS 2026 instance. Expect
 dialog per instance. Commit first: the version comes from git height, so an uncommitted rebuild can
 install the same version as before and do nothing.
 
-VS Code (from `src/Tooling/TokenSaver.VsCodeExt`):
+VS Code bridge source (from this repo's `vscode/` folder):
 
 ```bash
 npm run build

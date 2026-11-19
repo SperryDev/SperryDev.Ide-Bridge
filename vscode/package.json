@@ -1,0 +1,16 @@
+{
+  "name": "sperrydev-ide-bridge-vscode",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "26.1.0",
+    "@types/vscode": "1.125.0",
+    "typescript": "5.9.3",
+    "vitest": "5.1.0"
+  }
+}

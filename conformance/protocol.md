@@ -1,7 +1,7 @@
 # IDE bridge protocol (conformance)
 
 Every IDE bridge follows these rules. The C# bridge (`SperryDev.Ide.Bridge`) and the VS Code bridge
-(`TokenSaver.VsCodeExt/src/ideBridge.ts`) both must pass the fixtures in `fixtures.json`.
+(`vscode/src/ideBridge.ts`) both must pass the fixtures in `fixtures.json`.
 
 ## Pipe
 

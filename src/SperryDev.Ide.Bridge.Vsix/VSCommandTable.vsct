@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+
+  <Commands Package="guidBridgePackage">
+    <Groups>
+      <Group guid="guidBridgeCmdSet" id="MyMenuGroup" priority="0x0600">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+      </Group>
+    </Groups>
+
+    <Buttons>
+      <Button guid="guidBridgeCmdSet" id="cmdidShowBridgeStatus" priority="0x0100" type="Button">
+        <Parent guid="guidBridgeCmdSet" id="MyMenuGroup"/>
+        <Strings><ButtonText>Show IDE Bridge Status</ButtonText></Strings>
+      </Button>
+      <Button guid="guidBridgeCmdSet" id="cmdidStartBridge" priority="0x0110" type="Button">
+        <Parent guid="guidBridgeCmdSet" id="MyMenuGroup"/>
+        <Strings><ButtonText>Start IDE Bridge</ButtonText></Strings>
+      </Button>
+      <Button guid="guidBridgeCmdSet" id="cmdidStopBridge" priority="0x0120" type="Button">
+        <Parent guid="guidBridgeCmdSet" id="MyMenuGroup"/>
+        <Strings><ButtonText>Stop IDE Bridge</ButtonText></Strings>
+      </Button>
+    </Buttons>
+  </Commands>
+
+  <Symbols>
+    <GuidSymbol name="guidBridgePackage" value="{774B5915-DC74-4FB8-AE6F-A8EF4A7187F7}" />
+    <GuidSymbol name="guidBridgeCmdSet" value="{75A66F44-1E3A-460D-A985-E49344792805}">
+      <IDSymbol name="MyMenuGroup" value="0x1020" />
+      <IDSymbol name="cmdidShowBridgeStatus" value="0x0100" />
+      <IDSymbol name="cmdidStartBridge" value="0x0101" />
+      <IDSymbol name="cmdidStopBridge" value="0x0102" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>

@@ -1,11 +1,14 @@
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using TokenSaver.MCP.Services;
+using TokenSaver.MCP.Tools;
 
 // The IDE bridge's own MCP server. It speaks MCP over stdio and exposes the bridge tools.
-// Tools are added in the migration stages; this stage only starts an empty server.
 var builder = Host.CreateApplicationBuilder(args);
+builder.Services.Configure<IdeToolsOptions>(builder.Configuration.GetSection("IdeTools"));
 builder.Services
     .AddMcpServer()
-    .WithStdioServerTransport();
+    .WithStdioServerTransport()
+    .WithTools<IdeTools>();
 
 await builder.Build().RunAsync();

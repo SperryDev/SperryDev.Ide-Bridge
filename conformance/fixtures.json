@@ -1,0 +1,17 @@
+{
+  "health": {
+    "request": { "action": "health" },
+    "ok": true,
+    "reply_keys": ["ok", "pid", "result"]
+  },
+  "unknown_action": {
+    "request": { "action": "no-such-action" },
+    "ok": false,
+    "reply_keys": ["ok", "pid", "error"]
+  },
+  "malformed_line": {
+    "raw": "{ not json",
+    "ok": false,
+    "reply_keys": ["ok", "pid", "error"]
+  }
+}

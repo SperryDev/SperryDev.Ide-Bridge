@@ -68,10 +68,27 @@ public sealed class ConformanceTests
 
     private static async Task<string> SendLineAsync(string pipeName, string line)
     {
-        using var client = new NamedPipeClientStream(".", pipeName, PipeDirection.InOut, PipeOptions.Asynchronous);
-        await client.ConnectAsync(3000);
-        using var reader = new StreamReader(client, Encoding.UTF8, false, 1024, leaveOpen: true);
-        using var writer = new StreamWriter(client, new UTF8Encoding(false), 1024, leaveOpen: true) { AutoFlush = true };
+        // The server listens on a background task; on a loaded CI runner the first connect can outrun it. Retry until it is up.
+        NamedPipeClientStream? client = null;
+        var deadline = DateTime.UtcNow.AddSeconds(15);
+        while (true)
+        {
+            var attempt = new NamedPipeClientStream(".", pipeName, PipeDirection.InOut, PipeOptions.Asynchronous);
+            try
+            {
+                await attempt.ConnectAsync(500);
+                client = attempt;
+                break;
+            }
+            catch (TimeoutException) when (DateTime.UtcNow < deadline)
+            {
+                attempt.Dispose();
+            }
+        }
+
+        using var connected = client!;
+        using var reader = new StreamReader(connected, Encoding.UTF8, false, 1024, leaveOpen: true);
+        using var writer = new StreamWriter(connected, new UTF8Encoding(false), 1024, leaveOpen: true) { AutoFlush = true };
         await writer.WriteLineAsync(line);
         return await reader.ReadLineAsync() ?? string.Empty;
     }

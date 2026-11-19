@@ -17,6 +17,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SperryDev.Ide.Bridge\SperryDev.Ide.Bridge.csproj" />
+    <ProjectReference Include="..\SperryDev.Ide.Bridge.Common\SperryDev.Ide.Bridge.Common.csproj" />
+    <ProjectReference Include="..\TokenSaver.LogHelper\TokenSaver.LogHelper.csproj" />
   </ItemGroup>
 
 </Project>
+

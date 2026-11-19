@@ -1,8 +1,10 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="src/SperryDev.Ide.Bridge/SperryDev.Ide.Bridge.csproj" />
+    <Project Path="src/SperryDev.Ide.Bridge.Mcp/SperryDev.Ide.Bridge.Mcp.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/SperryDev.Ide.Bridge.Tests/SperryDev.Ide.Bridge.Tests.csproj" />
   </Folder>
 </Solution>
+

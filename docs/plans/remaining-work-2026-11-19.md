@@ -12,7 +12,7 @@ Status as of 2026-11-19. Source: the approved split plan (mcp docs/plans/ide-bri
 ## Moved from the mcp and TokenSaver plans
 
 - [x] TokenSaver consumer switch and bridge removal merged into local TokenSaver `wip`; terminal stack removal is at `c33734d`, and the parent `mcp` pointer is at `1ff63d9`.
-- [ ] The bridge's local `wip` has six commits beyond `origin/dev` and no upstream after PR #4 deleted the remote branch. Push or open a new PR only after a release request; merges into `dev` require approval.
+- [ ] The bridge's local `wip` has unpushed commits beyond `origin/dev` and no upstream after PR #4 deleted the remote branch. Push or open a new PR only after a release request; merges into `dev` require approval.
 - [x] Stale stash vs-services-bridge-wip: already gone. Nothing to do.
 - [x] docs/ide-bridge.md: updated the VS Code source path and confirmed `unsupported` is only emitted as `true`.
 - [ ] TokenSaver `docs/folder-index.md`: regenerate after the bridge code moves.

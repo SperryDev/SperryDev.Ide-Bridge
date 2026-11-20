@@ -15,7 +15,7 @@ Status as of 2026-11-19. Source: the approved split plan (mcp docs/plans/ide-bri
 - [x] The bridge's local `wip` had unpushed commits beyond `origin/dev` and no upstream after PR #4 deleted the remote branch. Published them on `codex/ide-bridge-stage9` and prepared a PR after the release request; merges into `dev` still require approval.
 - [x] Stale stash vs-services-bridge-wip: already gone. Nothing to do.
 - [x] docs/ide-bridge.md: updated the VS Code source path and confirmed `unsupported` is only emitted as `true`.
-- [ ] TokenSaver `docs/folder-index.md`: regenerate after the bridge code moves; the `code_index` MCP tool is unavailable in this session.
+- [x] Skip TokenSaver `docs/folder-index.md` regeneration; `code_index` is intentionally not being used.
 - [ ] Verify end to end: builds and test suites in both repos; MCP IdeBridgeHealth and IdeListInstances against a live VS instance. Both builds and test suites pass (see stage 8); live MCP and IDE checks remain.
 - [x] Keep SperryDev.Ide-Bridge and SperryDev.Docs as separate repositories, not mcp submodules.
 - [x] Close out the worktree copy `F:\source\mcp-wt-root\docs\plans\ide-bridge-split.md`: the `F:\source\mcp-wt-root` worktree no longer exists.

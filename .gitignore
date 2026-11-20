@@ -84,6 +84,7 @@ artifacts/
 *.azurePubxml
 PublishScripts/
 *.pubxml.user
+*.vsix
 
 # Code analysis and linting
 *.sarif

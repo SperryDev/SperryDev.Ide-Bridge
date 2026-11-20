@@ -2,12 +2,15 @@
   <Folder Name="/src/">
     <Project Path="src/SperryDev.Ide.Bridge/SperryDev.Ide.Bridge.csproj" />
     <Project Path="src/SperryDev.Ide.Bridge.Mcp/SperryDev.Ide.Bridge.Mcp.csproj" />
+    <Project Path="src/SperryDev.Ide.Bridge.Vsix/SperryDev.Ide.Bridge.Vsix.csproj" />
     <Project Path="src/SperryDev.Ide.Bridge.Common/SperryDev.Ide.Bridge.Common.csproj" />
     <Project Path="src/TokenSaver.LogHelper/TokenSaver.LogHelper.csproj" />
+    <Project Path="src/TokenSaver.TerminalControl/TokenSaver.TerminalControl.csproj" />
+    <Project Path="src/TokenSaver.WindowsSession/TokenSaver.WindowsSession.csproj" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/SperryDev.Ide.Bridge.Tests/SperryDev.Ide.Bridge.Tests.csproj" />
     <Project Path="tests/TokenSaver.LogHelper.Tests/TokenSaver.LogHelper.Tests.csproj" />
+    <Project Path="tests/TokenSaver.TerminalControl.Tests/TokenSaver.TerminalControl.Tests.csproj" />
   </Folder>
 </Solution>
-

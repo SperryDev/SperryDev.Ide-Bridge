@@ -16,7 +16,7 @@ Status as of 2026-11-19. Source: the approved split plan (mcp docs/plans/ide-bri
 - [x] Stale stash vs-services-bridge-wip: already gone. Nothing to do.
 - [x] docs/ide-bridge.md: updated the VS Code source path and confirmed `unsupported` is only emitted as `true`.
 - [ ] TokenSaver `docs/folder-index.md`: regenerate after the bridge code moves.
-- [ ] Verify end to end: dotnet build and test in both repos; MCP IdeBridgeHealth and IdeListInstances against a live VS instance.
+- [ ] Verify end to end: builds and test suites in both repos; MCP IdeBridgeHealth and IdeListInstances against a live VS instance. Ide-Bridge build and tests pass (see stage 8); TokenSaver is still running.
 - [ ] Submodule decision: whether this repo and SperryDev.Docs become submodules of mcp. If yes, push the submodule first, then the pointer.
 - [x] Close out the worktree copy `F:\source\mcp-wt-root\docs\plans\ide-bridge-split.md`: the `F:\source\mcp-wt-root` worktree no longer exists.
 
@@ -39,7 +39,7 @@ Stages (implementation is complete through stage 9; stage 8 verification remains
 5. [x] Extract the Visual Studio host (package wiring, IdeActions, and bridge controls) under the VSIX project. The TokenSaver copy was removed in stage 7.
 6. [x] Move the three Host-MCP contracts (labeled historical with links to current docs), extract the IDE bridge self-test to `docs/self_test.md`, and add standalone VSIX build/update scripts under `scripts/`. The old TokenSaver scripts are retained because they package the combined TokenSaver extension and contain no bridge-only sections; no bridge-only script section could be moved out of them.
 7. [x] Remove the extracted Bridge MCP tools/control services and tests, old IDE control HTTP endpoints/contracts, IDE-backed log providers, VS Code bridge files, duplicate Visual Studio host/controls, VSCode debugger adapter project, package references, solution entries, and the `IdeTestRunMode` setting from TokenSaver. Remove LogHelper and LogViewer completely, including their MCP tools, projects, configuration, skills, and contracts. TerminalControl stayed until stage 9 moved it; TokenSaver now has no IDE bridge or terminal session tools. Folder-index regeneration remains pending because the TokenSaver `code_index` MCP tool is unavailable here.
-8. [ ] Build and test: both repos green; the bridge MCP starts; TokenSaver MCP starts without bridge tools. Not run yet.
+8. [ ] Build and test: both repos green; the bridge MCP starts; TokenSaver MCP starts without bridge tools. Ide-Bridge full solution build succeeded with Visual Studio 18 MSBuild; its three test projects pass (196 LogHelper, 120 bridge MCP, 88 TerminalControl). TokenSaver full solution build and tests are still running. Live MCP startup and live IDE checks remain outstanding.
 9. [x] Move TerminalControl, WindowsSession support, terminal MCP tool and tests, contract, and wt standard-session plan into this repo. Remove the terminal stack from TokenSaver while leaving its separate WindowsSession utility for WslControl. Verification remains pending.
 
 ## Open

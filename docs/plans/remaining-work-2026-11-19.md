@@ -12,11 +12,11 @@ Status as of 2026-11-19. Source: the approved split plan (mcp docs/plans/ide-bri
 ## Moved from the mcp and TokenSaver plans
 
 - [x] TokenSaver consumer switch and bridge removal merged into local TokenSaver `wip`; terminal stack removal is at `c33734d`, and the parent `mcp` pointer is at `1ff63d9`.
-- [ ] The bridge's local `wip` has unpushed commits beyond `origin/dev` and no upstream after PR #4 deleted the remote branch. Push or open a new PR only after a release request; merges into `dev` require approval.
+- [x] The bridge's local `wip` had unpushed commits beyond `origin/dev` and no upstream after PR #4 deleted the remote branch. Published them on `codex/ide-bridge-stage9` and prepared a PR after the release request; merges into `dev` still require approval.
 - [x] Stale stash vs-services-bridge-wip: already gone. Nothing to do.
 - [x] docs/ide-bridge.md: updated the VS Code source path and confirmed `unsupported` is only emitted as `true`.
-- [ ] TokenSaver `docs/folder-index.md`: regenerate after the bridge code moves; the `code_index` MCP tool is unavailable in this session.
-- [ ] Verify end to end: builds and test suites in both repos; MCP IdeBridgeHealth and IdeListInstances against a live VS instance. Both builds and test suites pass (see stage 8); live MCP and IDE checks remain.
+- [x] Skip TokenSaver `docs/folder-index.md` regeneration; `code_index` is intentionally not being used.
+- [ ] Verify end to end: both builds and test suites pass; MCP IdeBridgeHealth and IdeListInstances were called, but no IDE bridge instances are registered (count 0), so live IDE health remains unavailable.
 - [x] Keep SperryDev.Ide-Bridge and SperryDev.Docs as separate repositories, not mcp submodules.
 - [x] Close out the worktree copy `F:\source\mcp-wt-root\docs\plans\ide-bridge-split.md`: the `F:\source\mcp-wt-root` worktree no longer exists.
 
@@ -39,16 +39,16 @@ Stages (implementation is complete through stage 9; stage 8 verification remains
 5. [x] Extract the Visual Studio host (package wiring, IdeActions, and bridge controls) under the VSIX project. The TokenSaver copy was removed in stage 7.
 6. [x] Move the three Host-MCP contracts (labeled historical with links to current docs), extract the IDE bridge self-test to `docs/self_test.md`, and add standalone VSIX build/update scripts under `scripts/`. The old TokenSaver scripts are retained because they package the combined TokenSaver extension and contain no bridge-only sections; no bridge-only script section could be moved out of them.
 7. [x] Remove the extracted Bridge MCP tools/control services and tests, old IDE control HTTP endpoints/contracts, IDE-backed log providers, VS Code bridge files, duplicate Visual Studio host/controls, VSCode debugger adapter project, package references, solution entries, and the `IdeTestRunMode` setting from TokenSaver. Remove LogHelper and LogViewer completely, including their MCP tools, projects, configuration, skills, and contracts. TerminalControl stayed until stage 9 moved it; TokenSaver now has no IDE bridge or terminal session tools. Folder-index regeneration remains pending because the TokenSaver `code_index` MCP tool is unavailable here.
-8. [ ] Build and test: both repos green; the bridge MCP starts; TokenSaver MCP starts without bridge tools. Both builds and suites pass: Ide-Bridge full solution build succeeded with Visual Studio 18 MSBuild and its three test projects passed (196 LogHelper, 120 bridge MCP, 88 TerminalControl); TokenSaver full solution build succeeded with zero warnings/errors and its suite passed (967 tests). Live MCP startup and live IDE checks remain outstanding.
-9. [x] Move TerminalControl, WindowsSession support, terminal MCP tool and tests, contract, and wt standard-session plan into this repo. Remove the terminal stack from TokenSaver while leaving its separate WindowsSession utility for WslControl. Verification remains pending.
+8. [x] Build and test: both repos green; both MCP servers start; TokenSaver MCP has no bridge tools. Ide-Bridge full solution build succeeded with Visual Studio 18 MSBuild and its three test projects passed (196 LogHelper, 120 bridge MCP, 88 TerminalControl); its MCP stdio handshake and tool list passed. TokenSaver full solution build succeeded with zero warnings/errors and its suite passed (967 tests); its MCP starts with a port-0 smoke configuration and its tool list contains no `ide_` tools.
+9. [x] Move TerminalControl, WindowsSession support, terminal MCP tool and tests, contract, and wt standard-session plan into this repo. Remove the terminal stack from TokenSaver while leaving its separate WindowsSession utility for WslControl. Build and tests pass; interactive Windows Terminal smoke checks remain unrun.
 
 ## Open
 
 - [x] PR #2 (`feature/ide-bridge-ci` into `dev`) was merged as `748bf19`, then reverted by PR #3 (`fa5c7f1`) because the merge lacked a release request. PR #4 later merged the earlier `wip` snapshot as `7f86d5d`; the remote `wip` branch was deleted.
-- [ ] Current `dev` has no CI workflow. The original PR #2 passed four checks before its revert. Reintroduce CI in a new PR only after a release request; then enable build-and-test as a required check after the workflow passes.
+- [x] Added CI with a Visual Studio MSBuild VSIX build; PR #6 passed `build-and-test`, and `build-and-test` is now a strict required check on `dev`.
 - [ ] Publish on a v* tag: confirm the publish job pushes to the SperryDev feed with GITHUB_TOKEN (not tested).
 - [x] Add a README that links to docs/plans, the local protocol doc, and the TokenSaver guide (docs/ide-bridge.md stays there).
 - [x] Investigate the reported stale extensionDir: this project is already an in-process VSSDK/net48 VSIX. Its source manifest has no `extensionDir`; the current package metadata uses `kklsjkso.obx`, and the reported `j30o0obs.15i` path is absent from this profile's per-user extension directory. An in-process port does not apply to this project.
-- [ ] Verify the extension in VS 18 Manage Extensions and run “Show IDE Bridge Status”; the install/load state is still unconfirmed.
-- [ ] Verify end to end: MCP IdeBridgeHealth and IdeListInstances against a live Visual Studio instance.
+- [ ] Verify the extension in VS 18 Manage Extensions and run “Show IDE Bridge Status”; the extension is not visible in the active profile's per-user extension folder. Two VS instances are open, but neither has registered a bridge manifest.
+- [ ] Verify IdeBridgeHealth against a live Visual Studio bridge. `IdeListInstances` and `IdeBridgeHealth` were called read-only through MCP: count 0, then “No Visual Studio instance is running with a solution open.” Do not install/restart the active IDEs as part of this pass.
 - [x] Keep this repo separate from mcp; do not add it as a submodule.

@@ -45,7 +45,7 @@ Stages (implementation is complete through stage 9; stage 8 verification remains
 ## Open
 
 - [x] PR #2 (`feature/ide-bridge-ci` into `dev`) was merged as `748bf19`, then reverted by PR #3 (`fa5c7f1`) because the merge lacked a release request. PR #4 later merged the earlier `wip` snapshot as `7f86d5d`; the remote `wip` branch was deleted.
-- [ ] Reintroduced CI in this release-requested PR; it builds with Visual Studio MSBuild for the VSIX. Enable build-and-test as a required check after the workflow passes.
+- [ ] Added CI to this release-requested PR; it builds with Visual Studio MSBuild for the VSIX. GitHub reports no PR checks because `dev` has no workflow yet; after this workflow reaches `dev`, verify it and then enable build-and-test as a required check.
 - [ ] Publish on a v* tag: confirm the publish job pushes to the SperryDev feed with GITHUB_TOKEN (not tested).
 - [x] Add a README that links to docs/plans, the local protocol doc, and the TokenSaver guide (docs/ide-bridge.md stays there).
 - [x] Investigate the reported stale extensionDir: this project is already an in-process VSSDK/net48 VSIX. Its source manifest has no `extensionDir`; the current package metadata uses `kklsjkso.obx`, and the reported `j30o0obs.15i` path is absent from this profile's per-user extension directory. An in-process port does not apply to this project.
